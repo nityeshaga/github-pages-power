@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One HTML File</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.08);
+    --text: #999;
+    --text-bright: #e5e5e5;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59,130,246,0.15);
+    --salmon: #e8856c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body { overflow-x: hidden; }
+
+  /* ── Scroll animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Layout ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 32px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    max-width: none;
+    padding: 40px 32px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,133,108,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--salmon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    max-width: 600px;
+    margin-bottom: 48px;
+    color: var(--text);
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-bright);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    animation: bounce 2s infinite;
+    color: var(--text);
+    font-size: 1.5rem;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  /* ── COMPARISON ── */
+  .comparison {
+    text-align: center;
+  }
+
+  .comparison h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 64px;
+    letter-spacing: -0.02em;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .stack-tower {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .stack-block {
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .compare-arrow {
+    font-size: 2.5rem;
+    color: var(--accent);
+  }
+
+  .single-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .file-icon {
+    width: 120px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--accent), var(--salmon));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(59,130,246,0.2);
+  }
+
+  .file-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 0 12px 0 8px;
+  }
+
+  .single-file label {
+    font-size: 1.1rem;
+    color: var(--text-bright);
+    font-weight: 600;
+  }
+
+  /* ── DEMOS ── */
+  .demos h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .demos > p {
+    font-size: 1.15rem;
+    margin-bottom: 64px;
+    max-width: 600px;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .demo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .demo-card:hover { border-color: rgba(255,255,255,0.15); }
+
+  .demo-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+
+  .demo-card .line-count {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* Synth */
+  .keys {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .key {
+    flex: 1;
+    height: 100px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid var(--border);
+    background: linear-gradient(to bottom, #222, #1a1a1a);
+    cursor: pointer;
+    transition: all 0.1s;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 8px;
+    font-size: 0.7rem;
+    color: var(--text);
+  }
+
+  .key:active, .key.pressed {
+    background: linear-gradient(to bottom, var(--accent), #2563eb);
+    border-color: var(--accent);
+    color: #fff;
+    transform: scaleY(0.98);
+  }
+
+  .key.black-key {
+    background: #111;
+    height: 65px;
+    margin: 0 -8px;
+    z-index: 1;
+    flex: 0.6;
+  }
+  .key.black-key:active, .key.black-key.pressed {
+    background: linear-gradient(to bottom, var(--salmon), #c0604a);
+    border-color: var(--salmon);
+  }
+
+  /* Canvas */
+  .canvas-wrap {
+    position: relative;
+    margin-top: 8px;
+  }
+
+  #draw-canvas {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #111;
+    cursor: crosshair;
+    touch-action: none;
+  }
+
+  .canvas-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  .color-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .color-dot:hover { transform: scale(1.15); }
+  .color-dot.active { border-color: #fff; }
+
+  .canvas-controls button {
+    margin-left: auto;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .canvas-controls button:hover { border-color: rgba(255,255,255,0.2); color: var(--text-bright); }
+
+  /* Markdown editor */
+  .md-editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-top: 8px;
+    height: 200px;
+  }
+
+  .md-editor textarea {
+    background: #111;
+    color: var(--text-bright);
+    border: none;
+    padding: 16px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 0.85rem;
+    resize: none;
+    outline: none;
+    line-height: 1.5;
+  }
+
+  .md-preview {
+    background: #161616;
+    padding: 16px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    color: var(--text-bright);
+    line-height: 1.6;
+  }
+
+  .md-preview h1, .md-preview h2, .md-preview h3 {
+    color: #fff;
+    margin: 0 0 8px;
+  }
+  .md-preview h1 { font-size: 1.4rem; }
+  .md-preview h2 { font-size: 1.2rem; }
+  .md-preview h3 { font-size: 1.05rem; }
+  .md-preview p { margin-bottom: 8px; }
+  .md-preview strong { color: var(--accent); }
+  .md-preview em { color: var(--salmon); font-style: italic; }
+  .md-preview code {
+    background: rgba(255,255,255,0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "SF Mono", monospace;
+    font-size: 0.85em;
+  }
+  .md-preview ul, .md-preview ol { padding-left: 20px; margin-bottom: 8px; }
+
+  /* ── CASE STUDY ── */
+  .case-study {
+    text-align: center;
+  }
+
+  .case-study h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .case-study > p {
+    font-size: 1.15rem;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .case-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+
+  .case-card .subtitle {
+    color: var(--salmon);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    line-height: 1.2;
+  }
+
+  .stat .label {
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  .case-card .features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    margin-bottom: 28px;
+  }
+
+  .case-card .features li {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .case-card .features li::before {
+    content: "\2713 ";
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── NEW STACK ── */
+  .new-stack {
+    text-align: center;
+  }
+
+  .new-stack h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .new-stack > p {
+    font-size: 1.15rem;
+    margin-bottom: 64px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .pipe-node {
+    padding: 20px 28px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .pipe-node .icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .pipe-node .name { font-weight: 600; color: var(--text-bright); font-size: 0.95rem; }
+  .pipe-node .desc { font-size: 0.8rem; color: var(--text); margin-top: 4px; }
+
+  .pipe-node.highlight {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  .pipe-arrow {
+    color: var(--accent);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .stack-quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--text-bright);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .stack-quote strong {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* ── IDEAS ── */
+  .ideas h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .ideas > p {
+    font-size: 1.15rem;
+    margin-bottom: 64px;
+    max-width: 600px;
+  }
+
+  .ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .idea-card {
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .idea-card:hover {
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .idea-card h4 {
+    font-size: 1.05rem;
+    color: var(--text-bright);
+    margin-bottom: 6px;
+  }
+
+  .idea-card p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .idea-card .est {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 80px 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+  }
+
+  footer p { margin-bottom: 32px; }
+
+  .badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    section { padding: 80px 20px; }
+    .compare-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .compare-arrow { transform: rotate(90deg); }
+    .demo-grid { grid-template-columns: 1fr; }
+    .case-card .features { grid-template-columns: 1fr; }
+    .stats-row { gap: 20px; }
+    .pipeline { flex-direction: column; }
+    .pipe-arrow { transform: rotate(90deg); }
+    .md-editor { grid-template-columns: 1fr; height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <h1>One <span>HTML</span> File.</h1>
+  <p>Zero frameworks. Zero build tools. Zero dependencies. This entire site is a single file on GitHub Pages.</p>
+  <div class="hero-buttons">
+    <button class="btn btn-primary" onclick="window.location.href='view-source:' + window.location.href" id="view-source-btn">View Source</button>
+    <a class="btn btn-ghost" href="#demos">See it in action</a>
+  </div>
+  <div class="scroll-hint">&#8595;</div>
+</section>
+
+<!-- ════════ COMPARISON ════════ -->
+<section class="comparison">
+  <div class="reveal">
+    <h2>What you think you need</h2>
+    <div class="compare-grid">
+      <div class="stack-tower">
+        <div class="stack-block">React / Next.js</div>
+        <div class="stack-block">Webpack / Vite</div>
+        <div class="stack-block">Node.js</div>
+        <div class="stack-block">npm (1,200 packages)</div>
+        <div class="stack-block">Vercel / Netlify</div>
+        <div class="stack-block">CI/CD Pipeline</div>
+      </div>
+      <div class="compare-arrow">&#8594;</div>
+      <div class="single-file">
+        <div class="file-icon">index.html</div>
+        <label>That's it. Really.</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ DEMOS ════════ -->
+<section class="demos" id="demos">
+  <div class="reveal">
+    <h2>Don't take our word for it.</h2>
+    <p>Every demo below is running right here, in this single HTML file. No libraries. No CDN. No backend.</p>
+  </div>
+
+  <div class="demo-grid">
+    <!-- SYNTH -->
+    <div class="demo-card reveal">
+      <h3>A Synthesizer</h3>
+      <div class="line-count">32 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Click the keys or press A-K on your keyboard.</p>
+      <div class="keys" id="synth">
+        <div class="key" data-note="261.63">A<br>C</div>
+        <div class="key black-key" data-note="277.18">W<br>C#</div>
+        <div class="key" data-note="293.66">S<br>D</div>
+        <div class="key black-key" data-note="311.13">E<br>D#</div>
+        <div class="key" data-note="329.63">D<br>E</div>
+        <div class="key" data-note="349.23">F<br>F</div>
+        <div class="key black-key" data-note="369.99">T<br>F#</div>
+        <div class="key" data-note="392.00">G<br>G</div>
+        <div class="key black-key" data-note="415.30">Y<br>G#</div>
+        <div class="key" data-note="440.00">H<br>A</div>
+        <div class="key black-key" data-note="466.16">U<br>A#</div>
+        <div class="key" data-note="493.88">J<br>B</div>
+        <div class="key" data-note="523.25">K<br>C</div>
+      </div>
+    </div>
+
+    <!-- CANVAS -->
+    <div class="demo-card reveal">
+      <h3>A Drawing Canvas</h3>
+      <div class="line-count">28 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Draw with your mouse or finger.</p>
+      <div class="canvas-wrap">
+        <canvas id="draw-canvas"></canvas>
+        <div class="canvas-controls">
+          <div class="color-dot active" style="background:#fff" data-color="#fff"></div>
+          <div class="color-dot" style="background:#3b82f6" data-color="#3b82f6"></div>
+          <div class="color-dot" style="background:#e8856c" data-color="#e8856c"></div>
+          <div class="color-dot" style="background:#22c55e" data-color="#22c55e"></div>
+          <div class="color-dot" style="background:#eab308" data-color="#eab308"></div>
+          <button onclick="clearCanvas()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKDOWN -->
+    <div class="demo-card reveal">
+      <h3>A Markdown Editor</h3>
+      <div class="line-count">24 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Type markdown on the left, see it rendered on the right.</p>
+      <div class="md-editor">
+        <textarea id="md-input" spellcheck="false"># Hello World
+
+This is **bold** and this is *italic*.
+
+## Features
+- Real-time preview
+- Zero dependencies
+- `inline code`
+
+All in one HTML file.</textarea>
+        <div class="md-preview" id="md-output"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CASE STUDY ════════ -->
+<section class="case-study">
+  <div class="reveal">
+    <h2>Already in production.</h2>
+    <p>This isn't theoretical. We built a full graphic novel reader with this exact approach.</p>
+  </div>
+  <div class="case-card reveal">
+    <h3>The Braided River</h3>
+    <div class="subtitle">A graphic novel about genetics, deployed on GitHub Pages</div>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="number">33+</span>
+        <span class="label">pages</span>
+      </div>
+      <div class="stat">
+        <span class="number">1</span>
+        <span class="label">HTML file</span>
+      </div>
+      <div class="stat">
+        <span class="number">0</span>
+        <span class="label">frameworks</span>
+      </div>
+      <div class="stat">
+        <span class="number">0</span>
+        <span class="label">monthly cost</span>
+      </div>
+    </div>
+    <ul class="features">
+      <li>Swipe and arrow key navigation</li>
+      <li>Remembers your reading position</li>
+      <li>Table of contents</li>
+      <li>Auto-discovers new pages on deploy</li>
+      <li>Progress bar</li>
+      <li>Optimized for iPad</li>
+    </ul>
+    <a class="btn btn-primary" href="https://nityeshaga.github.io/reich-graphic-novel/" target="_blank">Read it live</a>
+  </div>
+</section>
+
+<!-- ════════ NEW STACK ════════ -->
+<section class="new-stack">
+  <div class="reveal">
+    <h2>The new stack.</h2>
+    <p>Your content, one HTML file, and free hosting. That's the whole architecture.</p>
+  </div>
+  <div class="pipeline reveal">
+    <div class="pipe-node">
+      <div class="icon">&#128196;</div>
+      <div class="name">Your Content</div>
+      <div class="desc">Markdown, images, data</div>
+    </div>
+    <div class="pipe-arrow">&#8594;</div>
+    <div class="pipe-node highlight">
+      <div class="icon">&#9998;</div>
+      <div class="name">Claude Code</div>
+      <div class="desc">Writes the HTML</div>
+    </div>
+    <div class="pipe-arrow">&#8594;</div>
+    <div class="pipe-node">
+      <div class="icon">&#128195;</div>
+      <div class="name">index.html</div>
+      <div class="desc">Single file, all inline</div>
+    </div>
+    <div class="pipe-arrow">&#8594;</div>
+    <div class="pipe-node">
+      <div class="icon">&#127760;</div>
+      <div class="name">GitHub Pages</div>
+      <div class="desc">Free, instant, global</div>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="stack-quote">"Describe what you want. Claude Code builds it. Push to GitHub. <strong>You're live.</strong>"</p>
+  </div>
+</section>
+
+<!-- ════════ IDEAS ════════ -->
+<section class="ideas">
+  <div class="reveal">
+    <h2>What will you build?</h2>
+    <p>Everything below is achievable with one HTML file and GitHub Pages. No backend required.</p>
+  </div>
+  <div class="ideas-grid">
+    <div class="idea-card reveal">
+      <h4>Interactive Pitch Deck</h4>
+      <p>A spatial canvas with animations, embedded demos, and branching paths based on your audience.</p>
+      <div class="est">~200 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Knowledge Garden</h4>
+      <p>An explorable graph of your notes and ideas. Click nodes, see connections, discover patterns.</p>
+      <div class="est">~300 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Podcast Player</h4>
+      <p>Episode list, waveform visualization, show notes. Add a new MP3 file and it appears automatically.</p>
+      <div class="est">~250 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Choose-Your-Own-Adventure Docs</h4>
+      <p>Onboarding that adapts to who's reading. "Are you a developer or designer?" and the page reshuffles.</p>
+      <div class="est">~150 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Drum Machine</h4>
+      <p>Web Audio API sequencer with recording and looping. A full instrument in a single file.</p>
+      <div class="est">~200 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Tiny CRM</h4>
+      <p>Contacts, notes, follow-ups. Data lives in localStorage. Works offline. Export as JSON for backup.</p>
+      <div class="est">~350 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Interactive Essay</h4>
+      <p>Text that responds to scrolling. Charts animate, diagrams build, code runs live. NYT-quality storytelling.</p>
+      <div class="est">~400 lines</div>
+    </div>
+    <div class="idea-card reveal">
+      <h4>Photo Editor</h4>
+      <p>Crop, filters, layers, export. Canvas API handles everything. No uploads, no server, no Photoshop.</p>
+      <div class="est">~500 lines</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <h2>This page is one file. Fork it.</h2>
+  <p>Built with Claude Code. Deployed on GitHub Pages. Zero dollars per month, forever.</p>
+  <div class="badge">Built with Claude Code</div>
+</footer>
+
+<script>
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── View source button ──
+document.getElementById('view-source-btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.open('https://github.com/nityeshaga/github-pages-power', '_blank');
+});
+
+// ── Synthesizer ──
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const keyMap = { a:261.63, w:277.18, s:293.66, e:311.13, d:329.63, f:349.23, t:369.99, g:392, y:415.3, h:440, u:466.16, j:493.88, k:523.25 };
+const activeOscs = {};
+
+function playNote(freq, keyEl) {
+  if (activeOscs[freq]) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.value = 0.3;
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start();
+  activeOscs[freq] = { osc, gain };
+  if (keyEl) keyEl.classList.add('pressed');
+}
+
+function stopNote(freq, keyEl) {
+  if (!activeOscs[freq]) return;
+  const { osc, gain } = activeOscs[freq];
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+  setTimeout(() => osc.stop(), 100);
+  delete activeOscs[freq];
+  if (keyEl) keyEl.classList.remove('pressed');
+}
+
+document.querySelectorAll('#synth .key').forEach(key => {
+  const freq = parseFloat(key.dataset.note);
+  key.addEventListener('mousedown', () => playNote(freq, key));
+  key.addEventListener('mouseup', () => stopNote(freq, key));
+  key.addEventListener('mouseleave', () => stopNote(freq, key));
+  key.addEventListener('touchstart', (e) => { e.preventDefault(); playNote(freq, key); });
+  key.addEventListener('touchend', () => stopNote(freq, key));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.repeat) return;
+  const freq = keyMap[e.key.toLowerCase()];
+  if (freq) {
+    const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`);
+    playNote(freq, keyEl);
+  }
+});
+document.addEventListener('keyup', (e) => {
+  const freq = keyMap[e.key.toLowerCase()];
+  if (freq) {
+    const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`);
+    stopNote(freq, keyEl);
+  }
+});
+
+// ── Drawing canvas ──
+const canvas = document.getElementById('draw-canvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+let drawColor = '#fff';
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * devicePixelRatio;
+  canvas.height = rect.height * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = 3;
+}
+resizeCanvas();
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.touches ? e.touches[0] : e;
+  return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+}
+
+canvas.addEventListener('mousedown', (e) => { drawing = true; ctx.beginPath(); const p = getPos(e); ctx.moveTo(p.x, p.y); });
+canvas.addEventListener('mousemove', (e) => { if (!drawing) return; ctx.strokeStyle = drawColor; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+canvas.addEventListener('mouseup', () => drawing = false);
+canvas.addEventListener('mouseleave', () => drawing = false);
+canvas.addEventListener('touchstart', (e) => { e.preventDefault(); drawing = true; ctx.beginPath(); const p = getPos(e); ctx.moveTo(p.x, p.y); });
+canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (!drawing) return; ctx.strokeStyle = drawColor; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+canvas.addEventListener('touchend', () => drawing = false);
+
+document.querySelectorAll('.color-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+    drawColor = dot.dataset.color;
+  });
+});
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// ── Markdown editor ──
+const mdInput = document.getElementById('md-input');
+const mdOutput = document.getElementById('md-output');
+
+function renderMarkdown(text) {
+  return text
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hulo])(.+)$/gm, '<p>$1</p>')
+    .replace(/<p><\/p>/g, '');
+}
+
+function updatePreview() {
+  mdOutput.innerHTML = renderMarkdown(mdInput.value);
+}
+
+mdInput.addEventListener('input', updatePreview);
+updatePreview();
+</script>
+</body>
+</html>
