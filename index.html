@@ -29,7 +29,6 @@
 
   body { overflow-x: hidden; }
 
-  /* ── Scroll animations ── */
   .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -40,7 +39,6 @@
     transform: translateY(0);
   }
 
-  /* ── Layout ── */
   section {
     max-width: 1100px;
     margin: 0 auto;
@@ -140,9 +138,7 @@
   }
 
   /* ── COMPARISON ── */
-  .comparison {
-    text-align: center;
-  }
+  .comparison { text-align: center; }
 
   .comparison h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -159,12 +155,7 @@
     align-items: center;
   }
 
-  .stack-tower {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-  }
+  .stack-tower { display: flex; flex-direction: column; gap: 12px; align-items: center; }
 
   .stack-block {
     padding: 14px 32px;
@@ -179,64 +170,36 @@
     color: var(--text);
   }
 
-  .compare-arrow {
-    font-size: 2.5rem;
-    color: var(--accent);
-  }
+  .compare-arrow { font-size: 2.5rem; color: var(--accent); }
 
-  .single-file {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
+  .single-file { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 
   .file-icon {
-    width: 120px;
-    height: 150px;
+    width: 120px; height: 150px;
     background: linear-gradient(135deg, var(--accent), var(--salmon));
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 700; color: #fff;
     position: relative;
     box-shadow: 0 20px 60px rgba(59,130,246,0.2);
   }
 
   .file-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    background: rgba(0,0,0,0.15);
-    border-radius: 0 12px 0 8px;
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 30px; height: 30px;
+    background: rgba(0,0,0,0.15); border-radius: 0 12px 0 8px;
   }
 
-  .single-file label {
-    font-size: 1.1rem;
-    color: var(--text-bright);
-    font-weight: 600;
-  }
+  .single-file label { font-size: 1.1rem; color: var(--text-bright); font-weight: 600; }
 
   /* ── DEMOS ── */
   .demos h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    font-weight: 700; color: var(--text-bright);
+    margin-bottom: 16px; letter-spacing: -0.02em;
   }
 
-  .demos > p {
-    font-size: 1.15rem;
-    margin-bottom: 64px;
-    max-width: 600px;
-  }
+  .demos > p { font-size: 1.15rem; margin-bottom: 64px; max-width: 600px; }
 
   .demo-grid {
     display: grid;
@@ -256,11 +219,7 @@
 
   .demo-card:hover { border-color: rgba(255,255,255,0.15); }
 
-  .demo-card h3 {
-    font-size: 1.25rem;
-    color: var(--text-bright);
-    margin-bottom: 8px;
-  }
+  .demo-card h3 { font-size: 1.25rem; color: var(--text-bright); margin-bottom: 8px; }
 
   .demo-card .line-count {
     display: inline-block;
@@ -274,387 +233,295 @@
   }
 
   /* Synth */
-  .keys {
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-  }
+  .keys { display: flex; gap: 4px; margin-top: 8px; }
 
   .key {
-    flex: 1;
-    height: 100px;
+    flex: 1; height: 100px;
     border-radius: 0 0 8px 8px;
     border: 1px solid var(--border);
     background: linear-gradient(to bottom, #222, #1a1a1a);
-    cursor: pointer;
-    transition: all 0.1s;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 8px;
-    font-size: 0.7rem;
-    color: var(--text);
+    cursor: pointer; transition: all 0.1s;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 8px; font-size: 0.7rem; color: var(--text);
   }
 
   .key:active, .key.pressed {
     background: linear-gradient(to bottom, var(--accent), #2563eb);
-    border-color: var(--accent);
-    color: #fff;
-    transform: scaleY(0.98);
+    border-color: var(--accent); color: #fff; transform: scaleY(0.98);
   }
 
-  .key.black-key {
-    background: #111;
-    height: 65px;
-    margin: 0 -8px;
-    z-index: 1;
-    flex: 0.6;
-  }
+  .key.black-key { background: #111; height: 65px; margin: 0 -8px; z-index: 1; flex: 0.6; }
   .key.black-key:active, .key.black-key.pressed {
     background: linear-gradient(to bottom, var(--salmon), #c0604a);
     border-color: var(--salmon);
   }
 
   /* Canvas */
-  .canvas-wrap {
-    position: relative;
-    margin-top: 8px;
-  }
+  .canvas-wrap { position: relative; margin-top: 8px; }
 
   #draw-canvas {
-    width: 100%;
-    height: 180px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: #111;
-    cursor: crosshair;
-    touch-action: none;
+    width: 100%; height: 180px;
+    border-radius: 8px; border: 1px solid var(--border);
+    background: #111; cursor: crosshair; touch-action: none;
   }
 
-  .canvas-controls {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-    align-items: center;
-  }
+  .canvas-controls { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
 
   .color-dot {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    cursor: pointer;
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid transparent; cursor: pointer;
     transition: border-color 0.2s, transform 0.2s;
   }
   .color-dot:hover { transform: scale(1.15); }
   .color-dot.active { border-color: #fff; }
 
   .canvas-controls button {
-    margin-left: auto;
-    padding: 6px 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-    font-size: 0.85rem;
+    margin-left: auto; padding: 6px 16px; border-radius: 6px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text); cursor: pointer; font-size: 0.85rem;
   }
   .canvas-controls button:hover { border-color: rgba(255,255,255,0.2); color: var(--text-bright); }
 
   /* Markdown editor */
   .md-editor {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin-top: 8px;
-    height: 200px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--border); margin-top: 8px; height: 200px;
   }
 
   .md-editor textarea {
-    background: #111;
-    color: var(--text-bright);
-    border: none;
-    padding: 16px;
-    font-family: "SF Mono", "Fira Code", monospace;
-    font-size: 0.85rem;
-    resize: none;
-    outline: none;
-    line-height: 1.5;
+    background: #111; color: var(--text-bright); border: none;
+    padding: 16px; font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 0.85rem; resize: none; outline: none; line-height: 1.5;
   }
 
   .md-preview {
-    background: #161616;
-    padding: 16px;
-    overflow-y: auto;
-    font-size: 0.9rem;
-    color: var(--text-bright);
-    line-height: 1.6;
+    background: #161616; padding: 16px; overflow-y: auto;
+    font-size: 0.9rem; color: var(--text-bright); line-height: 1.6;
   }
 
-  .md-preview h1, .md-preview h2, .md-preview h3 {
-    color: #fff;
-    margin: 0 0 8px;
-  }
+  .md-preview h1, .md-preview h2, .md-preview h3 { color: #fff; margin: 0 0 8px; }
   .md-preview h1 { font-size: 1.4rem; }
   .md-preview h2 { font-size: 1.2rem; }
   .md-preview h3 { font-size: 1.05rem; }
   .md-preview p { margin-bottom: 8px; }
   .md-preview strong { color: var(--accent); }
   .md-preview em { color: var(--salmon); font-style: italic; }
-  .md-preview code {
-    background: rgba(255,255,255,0.08);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: "SF Mono", monospace;
-    font-size: 0.85em;
-  }
+  .md-preview code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-family: "SF Mono", monospace; font-size: 0.85em; }
   .md-preview ul, .md-preview ol { padding-left: 20px; margin-bottom: 8px; }
 
-  /* ── CASE STUDY ── */
-  .case-study {
-    text-align: center;
+  /* ── Podcast player ── */
+  .pod-player { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .pod-episodes { list-style: none; padding: 0; margin: 0 0 12px 0; }
+  .pod-episodes li {
+    padding: 10px 12px; cursor: pointer; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08); margin-bottom: 6px;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .pod-episodes li:hover { background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); }
+  .pod-episodes li.pod-active { background: rgba(59,130,246,0.12); border-color: #3b82f6; }
+  .pod-ep-title { color: #e5e5e5; font-size: 0.88rem; font-weight: 600; }
+  .pod-ep-meta { color: #666; font-size: 0.75rem; margin-top: 2px; }
+  .pod-canvas-wrap {
+    background: rgba(0,0,0,0.3); border-radius: 8px; padding: 12px;
+    border: 1px solid rgba(255,255,255,0.08); margin-bottom: 10px; display: none;
+  }
+  .pod-canvas-wrap.pod-visible { display: block; }
+  .pod-canvas-wrap canvas { width: 100%; height: 80px; display: block; border-radius: 4px; }
+  .pod-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .pod-play-btn {
+    background: #3b82f6; border: none; color: #fff; width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; font-size: 14px; display: flex;
+    align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0;
+  }
+  .pod-play-btn:hover { background: #2563eb; }
+  .pod-time { color: #666; font-size: 0.75rem; font-family: monospace; }
+  .pod-now-playing { color: #e8856c; font-size: 0.8rem; font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pod-show-notes {
+    background: rgba(0,0,0,0.2); border-radius: 8px; padding: 12px;
+    border: 1px solid rgba(255,255,255,0.08); display: none;
+  }
+  .pod-show-notes.pod-visible { display: block; }
+  .pod-show-notes h4 { color: #e5e5e5; margin: 0 0 6px 0; font-size: 0.82rem; }
+  .pod-show-notes p { color: #888; font-size: 0.78rem; line-height: 1.5; margin: 0; }
+
+  /* ── Trivia quiz ── */
+  .quiz-container { max-width: 100%; color: #e5e5e5; }
+  .quiz-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 0.8rem; color: #999; }
+  .quiz-progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+  .quiz-progress-fill { height: 100%; background: #3b82f6; border-radius: 4px; transition: width 0.4s ease; }
+  .quiz-score { font-size: 0.8rem; color: #3b82f6; font-weight: 600; }
+  .quiz-question { font-size: 1rem; font-weight: 600; color: #e5e5e5; margin-bottom: 16px; line-height: 1.4; min-height: 2.8em; opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .quiz-question.quiz-fade-out { opacity: 0; transform: translateY(-8px); }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .quiz-options.quiz-fade-out { opacity: 0; transform: translateY(8px); }
+  .quiz-option {
+    padding: 10px 14px; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+    color: #e5e5e5; font-size: 0.85rem; cursor: pointer;
+    transition: all 0.2s ease; text-align: left; line-height: 1.3;
+  }
+  .quiz-option:hover { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); }
+  .quiz-option.quiz-correct { background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.5); color: #22c55e; animation: quiz-pop 0.3s ease; }
+  .quiz-option.quiz-wrong { background: rgba(232,133,108,0.15); border-color: rgba(232,133,108,0.5); color: #e8856c; animation: quiz-shake 0.4s ease; }
+  .quiz-option.quiz-dim { opacity: 0.4; pointer-events: none; }
+  .quiz-end { text-align: center; padding: 20px 0; }
+  .quiz-end-score { font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 4px; }
+  .quiz-end-label { font-size: 0.85rem; color: #999; margin-bottom: 6px; }
+  .quiz-end-msg { font-size: 1rem; color: #e5e5e5; margin-bottom: 20px; }
+  .quiz-replay { padding: 10px 28px; background: #3b82f6; border: none; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.2s ease; }
+  .quiz-replay:hover { background: #2563eb; }
+  @keyframes quiz-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+  @keyframes quiz-pop { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+  /* ── Interactive essay ── */
+  .essay-wrap { position: relative; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+  .essay-scroll { height: 300px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #333 transparent; position: relative; }
+  .essay-scroll::-webkit-scrollbar { width: 4px; }
+  .essay-scroll::-webkit-scrollbar-track { background: transparent; }
+  .essay-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+  .essay-progress { position: absolute; top: 0; right: 0; width: 3px; height: 0%; background: #3b82f6; border-radius: 0 8px 0 0; transition: height 0.1s linear; z-index: 10; }
+  .essay-section { padding: 24px 20px; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
+  .essay-section + .essay-section { border-top: 1px solid rgba(255,255,255,0.05); }
+  .essay-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #3b82f6; margin-bottom: 8px; }
+  .essay-text { font-size: 0.85rem; color: #999; line-height: 1.6; margin-bottom: 16px; }
+  .essay-text strong { color: #e5e5e5; }
+  .essay-bars { display: flex; align-items: flex-end; gap: 6px; height: 100px; padding-top: 8px; }
+  .essay-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+  .essay-bar { width: 100%; border-radius: 3px 3px 0 0; transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1); height: 0; min-height: 0; }
+  .essay-bar-label { font-size: 0.6rem; color: #666; margin-top: 4px; text-align: center; }
+  .essay-counter { font-size: 2.2rem; font-weight: 700; color: #e5e5e5; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin: 8px 0; }
+  .essay-counter-unit { font-size: 0.85rem; color: #666; font-weight: 400; margin-left: 4px; }
+  .essay-word { display: inline; color: rgba(229, 229, 229, 0); transition: color 0.4s ease; }
+  .essay-word.essay-visible { color: #e5e5e5; }
+  .essay-word.essay-accent { color: transparent; transition: color 0.4s ease; }
+  .essay-word.essay-accent.essay-visible { color: #e8856c; }
+  .essay-sparkline { width: 100%; height: 60px; margin-top: 8px; }
+  .essay-sparkline polyline { fill: none; stroke: #3b82f6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; transition: stroke-dashoffset 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+  .essay-sparkline .essay-spark-fill { fill: url(#essay-grad); opacity: 0; transition: opacity 0.8s ease 0.4s; }
+  .essay-spark-dot { r: 3; fill: #e8856c; opacity: 0; transition: opacity 0.4s ease 1s; }
+  .essay-hint { text-align: center; padding: 12px; font-size: 0.7rem; color: #444; animation: essay-pulse 2s ease-in-out infinite; }
+  @keyframes essay-pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  /* ── Whiteboard ── */
+  .wb-wrap { user-select: none; }
+  .wb-toolbar { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+  .wb-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #999; border-radius: 6px; padding: 4px 8px; font-size: 14px; cursor: pointer; line-height: 1.2; transition: all 0.15s; }
+  .wb-btn:hover { background: rgba(255,255,255,0.1); color: #e5e5e5; }
+  .wb-btn.wb-active { background: rgba(59,130,246,0.2); border-color: #3b82f6; color: #3b82f6; }
+  .wb-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.08); margin: 0 2px; }
+  .wb-colors { display: flex; gap: 3px; align-items: center; }
+  .wb-color { width: 18px; height: 18px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: border-color 0.15s; }
+  .wb-color.wb-active { border-color: #e5e5e5; }
+  .wb-color:hover { border-color: rgba(255,255,255,0.4); }
+  .wb-widths { display: flex; gap: 4px; align-items: center; }
+  .wb-width { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); transition: all 0.15s; }
+  .wb-width.wb-active { background: rgba(59,130,246,0.15); border-color: #3b82f6; }
+  .wb-width-dot { border-radius: 50%; background: #999; }
+  .wb-canvas-wrap { position: relative; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; background: #1a1a1a; }
+  .wb-canvas { display: block; cursor: crosshair; width: 100%; height: 300px; }
+  .wb-text-input { position: absolute; background: transparent; border: 1px dashed #3b82f6; color: #e5e5e5; font-family: inherit; font-size: 14px; padding: 2px 4px; outline: none; min-width: 60px; border-radius: 3px; }
+
+  /* ── CASE STUDY ── */
+  .case-study { text-align: center; }
 
   .case-study h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    font-weight: 700; color: var(--text-bright);
+    margin-bottom: 16px; letter-spacing: -0.02em;
   }
 
   .case-study > p {
-    font-size: 1.15rem;
-    margin-bottom: 48px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.15rem; margin-bottom: 48px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
   }
 
   .case-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 48px;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 48px; text-align: left;
+    max-width: 800px; margin: 0 auto;
   }
 
-  .case-card h3 {
-    font-size: 1.5rem;
-    color: var(--text-bright);
-    margin-bottom: 8px;
-  }
+  .case-card h3 { font-size: 1.5rem; color: var(--text-bright); margin-bottom: 8px; }
+  .case-card .subtitle { color: var(--salmon); font-weight: 600; margin-bottom: 24px; }
 
-  .case-card .subtitle {
-    color: var(--salmon);
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-
-  .stats-row {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .stat .number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-bright);
-    line-height: 1.2;
-  }
-
-  .stat .label {
-    font-size: 0.85rem;
-    color: var(--text);
-  }
+  .stats-row { display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 24px; }
+  .stat { display: flex; flex-direction: column; }
+  .stat .number { font-size: 2rem; font-weight: 700; color: var(--text-bright); line-height: 1.2; }
+  .stat .label { font-size: 0.85rem; color: var(--text); }
 
   .case-card .features {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 24px;
-    margin-bottom: 28px;
+    list-style: none; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 28px;
   }
-
-  .case-card .features li {
-    font-size: 0.95rem;
-    color: var(--text);
-  }
-
-  .case-card .features li::before {
-    content: "\2713 ";
-    color: var(--accent);
-    font-weight: 700;
-  }
+  .case-card .features li { font-size: 0.95rem; color: var(--text); }
+  .case-card .features li::before { content: "\2713 "; color: var(--accent); font-weight: 700; }
 
   /* ── NEW STACK ── */
-  .new-stack {
-    text-align: center;
-  }
+  .new-stack { text-align: center; }
 
   .new-stack h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    font-weight: 700; color: var(--text-bright);
+    margin-bottom: 16px; letter-spacing: -0.02em;
   }
 
   .new-stack > p {
-    font-size: 1.15rem;
-    margin-bottom: 64px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.15rem; margin-bottom: 64px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
   }
 
-  .pipeline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 48px;
-  }
+  .pipeline { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; }
 
   .pipe-node {
-    padding: 20px 28px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    text-align: center;
-    min-width: 140px;
+    padding: 20px 28px; border-radius: 14px;
+    border: 1px solid var(--border); background: var(--surface);
+    text-align: center; min-width: 140px;
   }
 
   .pipe-node .icon { font-size: 1.8rem; margin-bottom: 8px; }
   .pipe-node .name { font-weight: 600; color: var(--text-bright); font-size: 0.95rem; }
   .pipe-node .desc { font-size: 0.8rem; color: var(--text); margin-top: 4px; }
+  .pipe-node.highlight { border-color: var(--accent); box-shadow: 0 0 30px var(--accent-glow); }
 
-  .pipe-node.highlight {
-    border-color: var(--accent);
-    box-shadow: 0 0 30px var(--accent-glow);
-  }
+  .pipe-arrow { color: var(--accent); font-size: 1.5rem; flex-shrink: 0; }
 
-  .pipe-arrow {
-    color: var(--accent);
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .stack-quote {
-    font-size: 1.3rem;
-    font-style: italic;
-    color: var(--text-bright);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-
-  .stack-quote strong {
-    color: var(--accent);
-    font-style: normal;
-  }
+  .stack-quote { font-size: 1.3rem; font-style: italic; color: var(--text-bright); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+  .stack-quote strong { color: var(--accent); font-style: normal; }
 
   /* ── IDEAS ── */
   .ideas h2 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    font-weight: 700; color: var(--text-bright);
+    margin-bottom: 16px; letter-spacing: -0.02em;
   }
 
-  .ideas > p {
-    font-size: 1.15rem;
-    margin-bottom: 64px;
-    max-width: 600px;
-  }
+  .ideas > p { font-size: 1.15rem; margin-bottom: 64px; max-width: 600px; }
 
-  .ideas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
+  .ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 
   .idea-card {
-    padding: 24px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    transition: all 0.3s;
-    cursor: default;
+    padding: 24px; border-radius: 14px;
+    border: 1px solid var(--border); background: var(--surface);
+    transition: all 0.3s; cursor: default;
   }
 
-  .idea-card:hover {
-    border-color: rgba(255,255,255,0.15);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  }
+  .idea-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
 
-  .idea-card h4 {
-    font-size: 1.05rem;
-    color: var(--text-bright);
-    margin-bottom: 6px;
-  }
-
-  .idea-card p {
-    font-size: 0.9rem;
-    color: var(--text);
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-
-  .idea-card .est {
-    font-size: 0.8rem;
-    color: var(--accent);
-    font-weight: 600;
-  }
+  .idea-card h4 { font-size: 1.05rem; color: var(--text-bright); margin-bottom: 6px; }
+  .idea-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 12px; line-height: 1.5; }
+  .idea-card .est { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
 
   /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 80px 32px;
-    border-top: 1px solid var(--border);
-  }
-
-  footer h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-  }
-
+  footer { text-align: center; padding: 80px 32px; border-top: 1px solid var(--border); }
+  footer h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; color: var(--text-bright); margin-bottom: 16px; }
   footer p { margin-bottom: 32px; }
-
-  .badge {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text);
-  }
+  .badge { display: inline-block; padding: 8px 16px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.85rem; color: var(--text); }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
     section { padding: 80px 20px; }
-    .compare-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+    .compare-grid { grid-template-columns: 1fr; gap: 24px; }
     .compare-arrow { transform: rotate(90deg); }
     .demo-grid { grid-template-columns: 1fr; }
     .case-card .features { grid-template-columns: 1fr; }
@@ -672,7 +539,7 @@
   <h1>One <span>HTML</span> File.</h1>
   <p>Zero frameworks. Zero build tools. Zero dependencies. This entire site is a single file on GitHub Pages.</p>
   <div class="hero-buttons">
-    <button class="btn btn-primary" onclick="window.location.href='view-source:' + window.location.href" id="view-source-btn">View Source</button>
+    <button class="btn btn-primary" id="view-source-btn">View Source</button>
     <a class="btn btn-ghost" href="#demos">See it in action</a>
   </div>
   <div class="scroll-hint">&#8595;</div>
@@ -730,7 +597,130 @@
       </div>
     </div>
 
-    <!-- CANVAS -->
+    <!-- PODCAST PLAYER -->
+    <div class="demo-card reveal">
+      <h3>A Podcast Player</h3>
+      <div class="line-count">85 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Waveform visualization, playhead scrubbing, show notes. Click an episode to play.</p>
+      <div class="pod-player" id="podPlayer">
+        <ul class="pod-episodes" id="podEpisodes">
+          <li data-ep="0">
+            <div class="pod-ep-title">The Architecture of Silence</div>
+            <div class="pod-ep-meta">May 12, 2026 &middot; 34 min</div>
+          </li>
+          <li data-ep="1">
+            <div class="pod-ep-title">Why Every Database Is a Time Machine</div>
+            <div class="pod-ep-meta">May 5, 2026 &middot; 28 min</div>
+          </li>
+          <li data-ep="2">
+            <div class="pod-ep-title">Edges: On Boundaries and Borderlands</div>
+            <div class="pod-ep-meta">Apr 28, 2026 &middot; 41 min</div>
+          </li>
+        </ul>
+        <div class="pod-canvas-wrap" id="podCanvasWrap">
+          <canvas id="podCanvas" height="80"></canvas>
+        </div>
+        <div class="pod-controls" id="podControls" style="display:none;">
+          <button class="pod-play-btn" id="podPlayBtn">&#9654;</button>
+          <div class="pod-now-playing" id="podNowPlaying"></div>
+          <div class="pod-time" id="podTime">0:00 / 0:00</div>
+        </div>
+        <div class="pod-show-notes" id="podShowNotes">
+          <h4>Show Notes</h4>
+          <p id="podNotesText"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRIVIA QUIZ -->
+    <div class="demo-card reveal">
+      <h3>A Trivia Game</h3>
+      <div class="line-count">68 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Five surprising questions with animated feedback and score tracking.</p>
+      <div class="quiz-container" id="quizDemo">
+        <div class="quiz-progress">
+          <span id="quizStep">1 / 5</span>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizBar" style="width:20%"></div></div>
+          <span class="quiz-score" id="quizScore">0 pts</span>
+        </div>
+        <div class="quiz-question" id="quizQ"></div>
+        <div class="quiz-options" id="quizOpts"></div>
+        <div class="quiz-end" id="quizEnd" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE ESSAY -->
+    <div class="demo-card reveal">
+      <h3>An Interactive Essay</h3>
+      <div class="line-count">75 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Scroll through a story about Earth's digital transformation, told with animated charts and counters.</p>
+      <div class="essay-wrap">
+        <div class="essay-progress" id="essayProgress"></div>
+        <div class="essay-scroll" id="essayScroll">
+          <div class="essay-hint">Scroll to explore</div>
+          <div class="essay-section" data-essay="bars">
+            <div class="essay-label">Global connectivity</div>
+            <p class="essay-text">In 2000, barely <strong>6%</strong> of the world was online. Today, <strong>two-thirds of humanity</strong> is connected.</p>
+            <div class="essay-bars" id="essayBars">
+              <div class="essay-bar-col"><div class="essay-bar" data-h="6" style="background: #e8856c;"></div><div class="essay-bar-label">'00</div></div>
+              <div class="essay-bar-col"><div class="essay-bar" data-h="16" style="background: #e8856c;"></div><div class="essay-bar-label">'05</div></div>
+              <div class="essay-bar-col"><div class="essay-bar" data-h="30" style="background: #3b82f6;"></div><div class="essay-bar-label">'10</div></div>
+              <div class="essay-bar-col"><div class="essay-bar" data-h="44" style="background: #3b82f6;"></div><div class="essay-bar-label">'15</div></div>
+              <div class="essay-bar-col"><div class="essay-bar" data-h="60" style="background: #3b82f6;"></div><div class="essay-bar-label">'20</div></div>
+              <div class="essay-bar-col"><div class="essay-bar" data-h="67" style="background: #e5e5e5;"></div><div class="essay-bar-label">'24</div></div>
+            </div>
+          </div>
+          <div class="essay-section" data-essay="counter">
+            <div class="essay-label">Scale of connection</div>
+            <p class="essay-text">That translates to a staggering number of people, each carrying a supercomputer in their pocket.</p>
+            <div class="essay-counter"><span id="essayCount">0</span><span class="essay-counter-unit">billion people online</span></div>
+          </div>
+          <div class="essay-section" data-essay="words">
+            <div class="essay-label">The shift</div>
+            <p class="essay-text">But raw numbers miss the texture. What changed isn't just access &mdash; it's what became possible:</p>
+            <p id="essayWords" class="essay-text" style="font-size: 1rem; line-height: 1.8;"></p>
+          </div>
+          <div class="essay-section" data-essay="spark">
+            <div class="essay-label">Data created per day</div>
+            <p class="essay-text">Every day, humanity generates <strong>402.74 million terabytes</strong> of data. The curve is exponential and accelerating.</p>
+            <svg class="essay-sparkline" viewBox="0 0 400 60" preserveAspectRatio="none" id="essaySpark">
+              <defs><linearGradient id="essay-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+              <polyline class="essay-spark-fill" points="0,58 20,57 60,55 100,52 140,50 180,46 220,40 260,32 300,20 340,10 380,3 400,1 400,60 0,60"/>
+              <polyline points="0,58 20,57 60,55 100,52 140,50 180,46 220,40 260,32 300,20 340,10 380,3 400,1"/>
+              <circle class="essay-spark-dot" cx="400" cy="1"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHITEBOARD -->
+    <div class="demo-card reveal">
+      <h3>A Whiteboard</h3>
+      <div class="line-count">168 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px;">Freehand draw, shapes, text, eraser &mdash; with full undo history.</p>
+      <div class="wb-wrap" id="wbApp">
+        <div class="wb-toolbar">
+          <button class="wb-btn wb-active" data-tool="pen" title="Pen">&#9998;</button>
+          <button class="wb-btn" data-tool="rect" title="Rectangle">&#9633;</button>
+          <button class="wb-btn" data-tool="circle" title="Circle">&#9675;</button>
+          <button class="wb-btn" data-tool="text" title="Text">T</button>
+          <button class="wb-btn" data-tool="eraser" title="Eraser">&#9708;</button>
+          <div class="wb-sep"></div>
+          <div class="wb-colors" id="wbColors"></div>
+          <div class="wb-sep"></div>
+          <div class="wb-widths" id="wbWidths"></div>
+          <div class="wb-sep"></div>
+          <button class="wb-btn" id="wbUndo" title="Undo">&#8630;</button>
+          <button class="wb-btn" id="wbClear" title="Clear all" style="color:#e8856c;">&#10005;</button>
+        </div>
+        <div class="wb-canvas-wrap">
+          <canvas class="wb-canvas" id="wbCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRAWING CANVAS -->
     <div class="demo-card reveal">
       <h3>A Drawing Canvas</h3>
       <div class="line-count">28 lines of JavaScript</div>
@@ -780,22 +770,10 @@ All in one HTML file.</textarea>
     <h3>The Braided River</h3>
     <div class="subtitle">A graphic novel about genetics, deployed on GitHub Pages</div>
     <div class="stats-row">
-      <div class="stat">
-        <span class="number">33+</span>
-        <span class="label">pages</span>
-      </div>
-      <div class="stat">
-        <span class="number">1</span>
-        <span class="label">HTML file</span>
-      </div>
-      <div class="stat">
-        <span class="number">0</span>
-        <span class="label">frameworks</span>
-      </div>
-      <div class="stat">
-        <span class="number">0</span>
-        <span class="label">monthly cost</span>
-      </div>
+      <div class="stat"><span class="number">33+</span><span class="label">pages</span></div>
+      <div class="stat"><span class="number">1</span><span class="label">HTML file</span></div>
+      <div class="stat"><span class="number">0</span><span class="label">frameworks</span></div>
+      <div class="stat"><span class="number">0</span><span class="label">monthly cost</span></div>
     </div>
     <ul class="features">
       <li>Swipe and arrow key navigation</li>
@@ -816,29 +794,13 @@ All in one HTML file.</textarea>
     <p>Your content, one HTML file, and free hosting. That's the whole architecture.</p>
   </div>
   <div class="pipeline reveal">
-    <div class="pipe-node">
-      <div class="icon">&#128196;</div>
-      <div class="name">Your Content</div>
-      <div class="desc">Markdown, images, data</div>
-    </div>
+    <div class="pipe-node"><div class="icon">&#128196;</div><div class="name">Your Content</div><div class="desc">Markdown, images, data</div></div>
     <div class="pipe-arrow">&#8594;</div>
-    <div class="pipe-node highlight">
-      <div class="icon">&#9998;</div>
-      <div class="name">Claude Code</div>
-      <div class="desc">Writes the HTML</div>
-    </div>
+    <div class="pipe-node highlight"><div class="icon">&#9998;</div><div class="name">Claude Code</div><div class="desc">Writes the HTML</div></div>
     <div class="pipe-arrow">&#8594;</div>
-    <div class="pipe-node">
-      <div class="icon">&#128195;</div>
-      <div class="name">index.html</div>
-      <div class="desc">Single file, all inline</div>
-    </div>
+    <div class="pipe-node"><div class="icon">&#128195;</div><div class="name">index.html</div><div class="desc">Single file, all inline</div></div>
     <div class="pipe-arrow">&#8594;</div>
-    <div class="pipe-node">
-      <div class="icon">&#127760;</div>
-      <div class="name">GitHub Pages</div>
-      <div class="desc">Free, instant, global</div>
-    </div>
+    <div class="pipe-node"><div class="icon">&#127760;</div><div class="name">GitHub Pages</div><div class="desc">Free, instant, global</div></div>
   </div>
   <div class="reveal">
     <p class="stack-quote">"Describe what you want. Claude Code builds it. Push to GitHub. <strong>You're live.</strong>"</p>
@@ -852,46 +814,12 @@ All in one HTML file.</textarea>
     <p>Everything below is achievable with one HTML file and GitHub Pages. No backend required.</p>
   </div>
   <div class="ideas-grid">
-    <div class="idea-card reveal">
-      <h4>Interactive Pitch Deck</h4>
-      <p>A spatial canvas with animations, embedded demos, and branching paths based on your audience.</p>
-      <div class="est">~200 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Knowledge Garden</h4>
-      <p>An explorable graph of your notes and ideas. Click nodes, see connections, discover patterns.</p>
-      <div class="est">~300 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Podcast Player</h4>
-      <p>Episode list, waveform visualization, show notes. Add a new MP3 file and it appears automatically.</p>
-      <div class="est">~250 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Choose-Your-Own-Adventure Docs</h4>
-      <p>Onboarding that adapts to who's reading. "Are you a developer or designer?" and the page reshuffles.</p>
-      <div class="est">~150 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Drum Machine</h4>
-      <p>Web Audio API sequencer with recording and looping. A full instrument in a single file.</p>
-      <div class="est">~200 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Tiny CRM</h4>
-      <p>Contacts, notes, follow-ups. Data lives in localStorage. Works offline. Export as JSON for backup.</p>
-      <div class="est">~350 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Interactive Essay</h4>
-      <p>Text that responds to scrolling. Charts animate, diagrams build, code runs live. NYT-quality storytelling.</p>
-      <div class="est">~400 lines</div>
-    </div>
-    <div class="idea-card reveal">
-      <h4>Photo Editor</h4>
-      <p>Crop, filters, layers, export. Canvas API handles everything. No uploads, no server, no Photoshop.</p>
-      <div class="est">~500 lines</div>
-    </div>
+    <div class="idea-card reveal"><h4>Interactive Pitch Deck</h4><p>A spatial canvas with animations, embedded demos, and branching paths based on your audience.</p><div class="est">~200 lines</div></div>
+    <div class="idea-card reveal"><h4>Knowledge Garden</h4><p>An explorable graph of your notes and ideas. Click nodes, see connections, discover patterns.</p><div class="est">~300 lines</div></div>
+    <div class="idea-card reveal"><h4>Choose-Your-Own-Adventure Docs</h4><p>Onboarding that adapts to who's reading. "Are you a developer or designer?" and the page reshuffles.</p><div class="est">~150 lines</div></div>
+    <div class="idea-card reveal"><h4>Drum Machine</h4><p>Web Audio API sequencer with recording and looping. A full instrument in a single file.</p><div class="est">~200 lines</div></div>
+    <div class="idea-card reveal"><h4>Tiny CRM</h4><p>Contacts, notes, follow-ups. Data lives in localStorage. Works offline. Export as JSON for backup.</p><div class="est">~350 lines</div></div>
+    <div class="idea-card reveal"><h4>Photo Editor</h4><p>Crop, filters, layers, export. Canvas API handles everything. No uploads, no server, no Photoshop.</p><div class="est">~500 lines</div></div>
   </div>
 </section>
 
@@ -924,11 +852,8 @@ function playNote(freq, keyEl) {
   if (activeOscs[freq]) return;
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
-  osc.type = 'sine';
-  osc.frequency.value = freq;
-  gain.gain.value = 0.3;
-  osc.connect(gain).connect(audioCtx.destination);
-  osc.start();
+  osc.type = 'sine'; osc.frequency.value = freq; gain.gain.value = 0.3;
+  osc.connect(gain).connect(audioCtx.destination); osc.start();
   activeOscs[freq] = { osc, gain };
   if (keyEl) keyEl.classList.add('pressed');
 }
@@ -952,63 +877,432 @@ document.querySelectorAll('#synth .key').forEach(key => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.repeat) return;
+  if (e.repeat || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   const freq = keyMap[e.key.toLowerCase()];
-  if (freq) {
-    const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`);
-    playNote(freq, keyEl);
-  }
+  if (freq) { const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`); playNote(freq, keyEl); }
 });
 document.addEventListener('keyup', (e) => {
   const freq = keyMap[e.key.toLowerCase()];
-  if (freq) {
-    const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`);
-    stopNote(freq, keyEl);
-  }
+  if (freq) { const keyEl = document.querySelector(`#synth .key[data-note="${freq}"]`); stopNote(freq, keyEl); }
 });
 
+// ── Podcast Player ──
+(function() {
+  const episodes = [
+    { title: 'The Architecture of Silence', dur: 2040, notes: 'We explore how negative space in design, music, and conversation carries more meaning than the content itself. Featuring architect Lina Vasquez on designing buildings around silence.' },
+    { title: 'Why Every Database Is a Time Machine', dur: 1680, notes: 'From event sourcing to append-only logs — your database remembers everything. A conversation with distributed systems researcher Tomoko Harada on temporal data models.' },
+    { title: 'Edges: On Boundaries and Borderlands', dur: 2460, notes: 'The most interesting things happen at boundaries — between disciplines, cultures, and ideas. Writer Amal Osei joins us to discuss life in the margins.' }
+  ];
+  const canvas = document.getElementById('podCanvas');
+  const ctx = canvas.getContext('2d');
+  const wrap = document.getElementById('podCanvasWrap');
+  const playBtn = document.getElementById('podPlayBtn');
+  const controls = document.getElementById('podControls');
+  const nowPlaying = document.getElementById('podNowPlaying');
+  const timeDisp = document.getElementById('podTime');
+  const showNotes = document.getElementById('podShowNotes');
+  const notesText = document.getElementById('podNotesText');
+  let current = -1, playing = false, progress = 0, bars = [], animId = null;
+
+  function genBars(n) {
+    const b = [];
+    for (let i = 0; i < n; i++) {
+      const base = 0.15 + Math.random() * 0.55;
+      const peak = Math.sin(i / n * Math.PI) * 0.3;
+      b.push(Math.min(base + peak + (Math.random() - 0.5) * 0.2, 0.95));
+    }
+    return b;
+  }
+
+  function draw() {
+    const w = canvas.width = canvas.offsetWidth * 2;
+    const h = canvas.height = 160;
+    ctx.clearRect(0, 0, w, h);
+    const n = bars.length, gap = 2, bw = (w - (n - 1) * gap) / n;
+    for (let i = 0; i < n; i++) {
+      const x = i * (bw + gap);
+      const bh = bars[i] * h * 0.85;
+      const y = (h - bh) / 2;
+      const pct = i / n;
+      if (pct < progress) {
+        ctx.fillStyle = `hsl(${210 + pct * 20}, ${75 + Math.sin(pct * 6) * 15}%, 58%)`;
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      }
+      ctx.beginPath(); ctx.roundRect(x, y, Math.max(bw, 1), bh, 2); ctx.fill();
+    }
+    const px = progress * w;
+    ctx.fillStyle = '#e8856c'; ctx.shadowColor = '#e8856c'; ctx.shadowBlur = 8;
+    ctx.beginPath(); ctx.roundRect(px - 1.5, 4, 3, h - 8, 2); ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+
+  function fmt(s) { return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0'); }
+
+  function tick() {
+    if (!playing) return;
+    const ep = episodes[current];
+    progress += 1 / (ep.dur * 30);
+    if (progress >= 1) { progress = 1; playing = false; playBtn.innerHTML = '&#9654;'; }
+    timeDisp.textContent = fmt(progress * ep.dur) + ' / ' + fmt(ep.dur);
+    draw(); animId = requestAnimationFrame(tick);
+  }
+
+  function selectEp(idx) {
+    current = idx; progress = 0; playing = false;
+    if (animId) cancelAnimationFrame(animId);
+    playBtn.innerHTML = '&#9654;'; bars = genBars(100);
+    document.querySelectorAll('#podEpisodes li').forEach((li, i) => li.classList.toggle('pod-active', i === idx));
+    wrap.classList.add('pod-visible'); controls.style.display = 'flex';
+    nowPlaying.textContent = episodes[idx].title;
+    timeDisp.textContent = '0:00 / ' + fmt(episodes[idx].dur);
+    showNotes.classList.add('pod-visible'); notesText.textContent = episodes[idx].notes;
+    draw();
+  }
+
+  document.querySelectorAll('#podEpisodes li').forEach(li =>
+    li.addEventListener('click', () => selectEp(+li.dataset.ep)));
+
+  playBtn.addEventListener('click', () => {
+    if (current < 0) return;
+    playing = !playing;
+    playBtn.innerHTML = playing ? '&#9646;&#9646;' : '&#9654;';
+    if (playing) { if (progress >= 1) progress = 0; tick(); }
+  });
+
+  canvas.addEventListener('click', (e) => {
+    if (current < 0) return;
+    progress = e.offsetX / canvas.offsetWidth;
+    timeDisp.textContent = fmt(progress * episodes[current].dur) + ' / ' + fmt(episodes[current].dur);
+    draw();
+  });
+})();
+
+// ── Trivia Quiz ──
+(function() {
+  const questions = [
+    { q: "A teaspoon of neutron star weighs roughly how much?", o: ["1,000 tons", "6 billion tons", "100 million tons", "500,000 tons"], a: 1 },
+    { q: "Which programming language was created in just 10 days?", o: ["Python", "Ruby", "JavaScript", "Lua"], a: 2 },
+    { q: "Oxford University is older than which civilization?", o: ["Roman Empire", "Ancient Greece", "Aztec Empire", "Byzantine Empire"], a: 2 },
+    { q: "How many possible games of chess exist (Shannon number)?", o: ["10^40", "10^80", "10^120", "10^200"], a: 2 },
+    { q: "What percentage of the ocean floor is still unmapped in high resolution?", o: ["About 25%", "About 50%", "About 75%", "About 95%"], a: 2 }
+  ];
+  let cur = 0, score = 0, locked = false;
+  const $ = id => document.getElementById(id);
+
+  function render() {
+    const qData = questions[cur];
+    $('quizStep').textContent = (cur + 1) + ' / 5';
+    $('quizBar').style.width = ((cur + 1) * 20) + '%';
+    $('quizScore').textContent = score + ' pts';
+    const qEl = $('quizQ'), oEl = $('quizOpts');
+    qEl.classList.add('quiz-fade-out'); oEl.classList.add('quiz-fade-out');
+    setTimeout(() => {
+      qEl.textContent = qData.q; oEl.innerHTML = '';
+      qData.o.forEach((text, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option'; btn.textContent = text;
+        btn.onclick = () => answer(i); oEl.appendChild(btn);
+      });
+      qEl.classList.remove('quiz-fade-out'); oEl.classList.remove('quiz-fade-out');
+    }, cur === 0 ? 0 : 300);
+    locked = false;
+  }
+
+  function answer(idx) {
+    if (locked) return; locked = true;
+    const btns = $('quizOpts').children;
+    const correct = questions[cur].a;
+    btns[correct].classList.add('quiz-correct');
+    if (idx === correct) { score++; $('quizScore').textContent = score + ' pts'; }
+    else { btns[idx].classList.add('quiz-wrong'); }
+    for (let i = 0; i < btns.length; i++) {
+      if (i !== idx && i !== correct) btns[i].classList.add('quiz-dim');
+      btns[i].onclick = null;
+    }
+    setTimeout(() => { cur++; if (cur < questions.length) render(); else showEnd(); }, 1200);
+  }
+
+  function showEnd() {
+    $('quizQ').style.display = 'none'; $('quizOpts').style.display = 'none';
+    document.querySelector('.quiz-progress').style.display = 'none';
+    const msgs = ['Rough start!', 'Not bad!', 'Solid!', 'Impressive!', 'Flawless!', 'Perfect score!'];
+    $('quizEnd').style.display = 'block';
+    $('quizEnd').innerHTML = '<div class="quiz-end-score">' + score + '/5</div><div class="quiz-end-label">Final Score</div><div class="quiz-end-msg">' + msgs[score] + '</div><button class="quiz-replay" onclick="document.quizReset()">Play Again</button>';
+  }
+
+  document.quizReset = function() {
+    cur = 0; score = 0;
+    $('quizQ').style.display = ''; $('quizOpts').style.display = '';
+    document.querySelector('.quiz-progress').style.display = '';
+    $('quizEnd').style.display = 'none'; render();
+  };
+
+  render();
+})();
+
+// ── Interactive Essay ──
+(function() {
+  const scroller = document.getElementById('essayScroll');
+  const progress = document.getElementById('essayProgress');
+  const sections = scroller.querySelectorAll('[data-essay]');
+  const triggered = {};
+
+  const sentence = "A farmer in Bihar checks tomorrow's weather. A teenager in Lagos learns calculus from a stranger's video. A grandmother in Osaka video-calls her grandchild across the ocean.";
+  const wordsEl = document.getElementById('essayWords');
+  const accentWords = new Set(['Bihar', 'Lagos', 'Osaka', 'calculus', 'ocean.']);
+  sentence.split(' ').forEach(w => {
+    const span = document.createElement('span');
+    span.className = 'essay-word' + (accentWords.has(w) ? ' essay-accent' : '');
+    span.textContent = w + ' ';
+    wordsEl.appendChild(span);
+  });
+  const wordSpans = wordsEl.querySelectorAll('.essay-word');
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  let countAnim = null;
+  function animateCounter(el, target, duration) {
+    if (countAnim) return;
+    const start = performance.now(); countAnim = true;
+    (function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = (easeOut(p) * target).toFixed(1);
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
+  }
+
+  function isVisible(section) {
+    const rect = section.getBoundingClientRect();
+    const scrollRect = scroller.getBoundingClientRect();
+    const sectionMid = rect.top + rect.height / 2;
+    return sectionMid > scrollRect.top && sectionMid < scrollRect.bottom;
+  }
+
+  function sectionRatio(section) {
+    const scrollRect = scroller.getBoundingClientRect();
+    const rect = section.getBoundingClientRect();
+    const entered = scrollRect.bottom - rect.top;
+    const travel = scrollRect.height + rect.height;
+    return Math.max(0, Math.min(1, entered / travel));
+  }
+
+  function onScroll() {
+    const maxScroll = scroller.scrollHeight - scroller.clientHeight;
+    const pct = maxScroll > 0 ? (scroller.scrollTop / maxScroll) * 100 : 0;
+    progress.style.height = pct + '%';
+
+    sections.forEach(sec => {
+      const type = sec.dataset.essay;
+      const vis = isVisible(sec);
+      const ratio = sectionRatio(sec);
+
+      if (type === 'bars' && vis && !triggered.bars) {
+        triggered.bars = true;
+        sec.querySelectorAll('.essay-bar').forEach((bar, i) => {
+          setTimeout(() => { bar.style.height = bar.dataset.h + '%'; }, i * 80);
+        });
+      }
+      if (type === 'counter' && vis && !triggered.counter) {
+        triggered.counter = true;
+        animateCounter(document.getElementById('essayCount'), 5.4, 1600);
+      }
+      if (type === 'words' && vis) {
+        const wordsToShow = Math.floor(ratio * wordSpans.length * 1.3);
+        wordSpans.forEach((w, i) => { w.classList.toggle('essay-visible', i < wordsToShow); });
+      }
+      if (type === 'spark' && vis && !triggered.spark) {
+        triggered.spark = true;
+        sec.querySelector('polyline:not(.essay-spark-fill)').style.strokeDashoffset = '0';
+        sec.querySelector('.essay-spark-fill').style.opacity = '1';
+        sec.querySelector('.essay-spark-dot').style.opacity = '1';
+      }
+    });
+  }
+
+  scroller.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// ── Whiteboard ──
+(function() {
+  const canvas = document.getElementById('wbCanvas');
+  const ctx = canvas.getContext('2d');
+  const wrap = canvas.parentElement;
+  const colors = ['#e5e5e5','#3b82f6','#e8856c','#22c55e','#eab308','#a855f7','#999999'];
+  const widths = [2, 4, 8];
+  let tool = 'pen', color = colors[0], lineW = widths[0];
+  let drawing = false, startX, startY;
+  let history = [], pathPts = [];
+  let textInput = null;
+
+  function resize() {
+    const r = wrap.getBoundingClientRect();
+    canvas.width = r.width; canvas.height = 300; redraw();
+  }
+
+  function buildUI() {
+    const cd = document.getElementById('wbColors');
+    colors.forEach((c, i) => {
+      const d = document.createElement('div');
+      d.className = 'wb-color' + (i === 0 ? ' wb-active' : '');
+      d.style.background = c;
+      d.onclick = () => { color = c; cd.querySelectorAll('.wb-color').forEach(e => e.classList.remove('wb-active')); d.classList.add('wb-active'); };
+      cd.appendChild(d);
+    });
+    const wd = document.getElementById('wbWidths');
+    widths.forEach((w, i) => {
+      const d = document.createElement('div');
+      d.className = 'wb-width' + (i === 0 ? ' wb-active' : '');
+      const dot = document.createElement('div');
+      dot.className = 'wb-width-dot';
+      dot.style.width = dot.style.height = (w + 2) + 'px';
+      d.appendChild(dot);
+      d.onclick = () => { lineW = w; wd.querySelectorAll('.wb-width').forEach(e => e.classList.remove('wb-active')); d.classList.add('wb-active'); };
+      wd.appendChild(d);
+    });
+    document.querySelectorAll('[data-tool]').forEach(b => {
+      b.onclick = () => { tool = b.dataset.tool; document.querySelectorAll('[data-tool]').forEach(e => e.classList.remove('wb-active')); b.classList.add('wb-active'); commitText(); };
+    });
+    document.getElementById('wbUndo').onclick = () => { if (history.length) { history.pop(); redraw(); } };
+    document.getElementById('wbClear').onclick = () => { if (history.length) { history = []; redraw(); } };
+  }
+
+  function redraw() { ctx.clearRect(0, 0, canvas.width, canvas.height); history.forEach(drawItem); }
+
+  function drawItem(item) {
+    ctx.save(); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (item.type === 'path') {
+      ctx.strokeStyle = item.color; ctx.lineWidth = item.width;
+      ctx.globalCompositeOperation = item.eraser ? 'destination-out' : 'source-over';
+      ctx.beginPath();
+      item.pts.forEach((p, i) => i === 0 ? ctx.moveTo(p[0], p[1]) : ctx.lineTo(p[0], p[1]));
+      ctx.stroke();
+    } else if (item.type === 'rect') {
+      ctx.strokeStyle = item.color; ctx.lineWidth = item.width;
+      ctx.strokeRect(item.x, item.y, item.w, item.h);
+    } else if (item.type === 'circle') {
+      ctx.strokeStyle = item.color; ctx.lineWidth = item.width;
+      ctx.beginPath(); ctx.ellipse(item.cx, item.cy, Math.abs(item.rx), Math.abs(item.ry), 0, 0, Math.PI * 2); ctx.stroke();
+    } else if (item.type === 'text') {
+      ctx.fillStyle = item.color; ctx.font = item.size + 'px -apple-system, BlinkMacSystemFont, sans-serif';
+      ctx.fillText(item.str, item.x, item.y);
+    }
+    ctx.restore();
+  }
+
+  function pos(e) {
+    const r = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return [src.clientX - r.left, src.clientY - r.top];
+  }
+
+  function commitText() {
+    if (!textInput) return;
+    const val = textInput.value.trim();
+    if (val) {
+      history.push({ type: 'text', str: val, x: parseFloat(textInput.style.left), y: parseFloat(textInput.style.top) + 14, color, size: 14 });
+      redraw();
+    }
+    textInput.remove(); textInput = null;
+  }
+
+  function onDown(e) {
+    e.preventDefault();
+    const [x, y] = pos(e);
+    if (tool === 'text') {
+      commitText();
+      textInput = document.createElement('input');
+      textInput.className = 'wb-text-input';
+      textInput.style.left = x + 'px'; textInput.style.top = y + 'px'; textInput.style.color = color;
+      wrap.appendChild(textInput); textInput.focus();
+      textInput.onkeydown = ev => { if (ev.key === 'Enter') commitText(); };
+      return;
+    }
+    drawing = true; startX = x; startY = y;
+    if (tool === 'pen' || tool === 'eraser') {
+      pathPts = [[x, y]]; ctx.beginPath(); ctx.moveTo(x, y);
+    }
+  }
+
+  function onMove(e) {
+    if (!drawing) return; e.preventDefault();
+    const [x, y] = pos(e);
+    if (tool === 'pen' || tool === 'eraser') {
+      pathPts.push([x, y]); ctx.save();
+      ctx.strokeStyle = tool === 'eraser' ? '#1a1a1a' : color;
+      ctx.lineWidth = tool === 'eraser' ? lineW * 3 : lineW;
+      ctx.lineCap = 'round';
+      ctx.globalCompositeOperation = tool === 'eraser' ? 'destination-out' : 'source-over';
+      ctx.lineTo(x, y); ctx.stroke(); ctx.restore();
+    } else {
+      redraw(); ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = lineW; ctx.setLineDash([4, 4]);
+      if (tool === 'rect') { ctx.strokeRect(startX, startY, x - startX, y - startY); }
+      else if (tool === 'circle') { ctx.beginPath(); ctx.ellipse((startX + x) / 2, (startY + y) / 2, Math.abs(x - startX) / 2, Math.abs(y - startY) / 2, 0, 0, Math.PI * 2); ctx.stroke(); }
+      ctx.restore();
+    }
+  }
+
+  function onUp(e) {
+    if (!drawing) return; drawing = false;
+    const [x, y] = pos(e.changedTouches ? e.changedTouches[0] : e);
+    if (tool === 'pen' || tool === 'eraser') {
+      history.push({ type: 'path', pts: pathPts, color, width: tool === 'eraser' ? lineW * 3 : lineW, eraser: tool === 'eraser' });
+    } else if (tool === 'rect') {
+      history.push({ type: 'rect', x: startX, y: startY, w: x - startX, h: y - startY, color, width: lineW });
+    } else if (tool === 'circle') {
+      history.push({ type: 'circle', cx: (startX + x) / 2, cy: (startY + y) / 2, rx: (x - startX) / 2, ry: (y - startY) / 2, color, width: lineW });
+    }
+    redraw();
+  }
+
+  canvas.addEventListener('mousedown', onDown);
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseup', onUp);
+  canvas.addEventListener('mouseleave', () => { if (drawing) { drawing = false; redraw(); } });
+  canvas.addEventListener('touchstart', onDown, { passive: false });
+  canvas.addEventListener('touchmove', onMove, { passive: false });
+  canvas.addEventListener('touchend', onUp);
+  window.addEventListener('resize', resize);
+  buildUI(); resize();
+})();
+
 // ── Drawing canvas ──
-const canvas = document.getElementById('draw-canvas');
-const ctx = canvas.getContext('2d');
-let drawing = false;
+const drawCanvas = document.getElementById('draw-canvas');
+const drawCtx = drawCanvas.getContext('2d');
+let isDrawing = false;
 let drawColor = '#fff';
 
 function resizeCanvas() {
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * devicePixelRatio;
-  canvas.height = rect.height * devicePixelRatio;
-  ctx.scale(devicePixelRatio, devicePixelRatio);
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  ctx.lineWidth = 3;
+  const rect = drawCanvas.getBoundingClientRect();
+  drawCanvas.width = rect.width * devicePixelRatio;
+  drawCanvas.height = rect.height * devicePixelRatio;
+  drawCtx.scale(devicePixelRatio, devicePixelRatio);
+  drawCtx.lineCap = 'round'; drawCtx.lineJoin = 'round'; drawCtx.lineWidth = 3;
 }
 resizeCanvas();
 
 function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
+  const rect = drawCanvas.getBoundingClientRect();
   const touch = e.touches ? e.touches[0] : e;
   return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
 }
 
-canvas.addEventListener('mousedown', (e) => { drawing = true; ctx.beginPath(); const p = getPos(e); ctx.moveTo(p.x, p.y); });
-canvas.addEventListener('mousemove', (e) => { if (!drawing) return; ctx.strokeStyle = drawColor; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-canvas.addEventListener('mouseup', () => drawing = false);
-canvas.addEventListener('mouseleave', () => drawing = false);
-canvas.addEventListener('touchstart', (e) => { e.preventDefault(); drawing = true; ctx.beginPath(); const p = getPos(e); ctx.moveTo(p.x, p.y); });
-canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (!drawing) return; ctx.strokeStyle = drawColor; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-canvas.addEventListener('touchend', () => drawing = false);
+drawCanvas.addEventListener('mousedown', (e) => { isDrawing = true; drawCtx.beginPath(); const p = getPos(e); drawCtx.moveTo(p.x, p.y); });
+drawCanvas.addEventListener('mousemove', (e) => { if (!isDrawing) return; drawCtx.strokeStyle = drawColor; const p = getPos(e); drawCtx.lineTo(p.x, p.y); drawCtx.stroke(); });
+drawCanvas.addEventListener('mouseup', () => isDrawing = false);
+drawCanvas.addEventListener('mouseleave', () => isDrawing = false);
+drawCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); isDrawing = true; drawCtx.beginPath(); const p = getPos(e); drawCtx.moveTo(p.x, p.y); });
+drawCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (!isDrawing) return; drawCtx.strokeStyle = drawColor; const p = getPos(e); drawCtx.lineTo(p.x, p.y); drawCtx.stroke(); });
+drawCanvas.addEventListener('touchend', () => isDrawing = false);
 
 document.querySelectorAll('.color-dot').forEach(dot => {
   dot.addEventListener('click', () => {
     document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
-    dot.classList.add('active');
-    drawColor = dot.dataset.color;
+    dot.classList.add('active'); drawColor = dot.dataset.color;
   });
 });
 
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+function clearCanvas() { drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height); }
 
 // ── Markdown editor ──
 const mdInput = document.getElementById('md-input');
@@ -1029,10 +1323,7 @@ function renderMarkdown(text) {
     .replace(/<p><\/p>/g, '');
 }
 
-function updatePreview() {
-  mdOutput.innerHTML = renderMarkdown(mdInput.value);
-}
-
+function updatePreview() { mdOutput.innerHTML = renderMarkdown(mdInput.value); }
 mdInput.addEventListener('input', updatePreview);
 updatePreview();
 </script>
