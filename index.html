@@ -391,6 +391,7 @@
   .demo-card:nth-child(4)::before { background: var(--ink); }
   .demo-card:nth-child(5)::before { background: #6366f1; }
   .demo-card:nth-child(6)::before { background: var(--red); }
+  .demo-card:nth-child(7)::before { background: var(--gold); }
 
   .demo-card h3 {
     font-family: var(--mono);
@@ -417,6 +418,7 @@
   .demo-card:nth-child(4) .line-count { background: var(--ink); }
   .demo-card:nth-child(5) .line-count { background: #6366f1; }
   .demo-card:nth-child(6) .line-count { background: var(--red); }
+  .demo-card:nth-child(7) .line-count { background: var(--gold); color: var(--ink); }
 
   /* Synth — dark internals */
   .keys { display: flex; gap: 3px; margin-top: 8px; }
@@ -830,6 +832,70 @@
   @media (max-width: 480px) {
     .ideas-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── Multiplayer Trivia ── */
+  .mp-game { max-width: 100%; color: var(--ink); }
+  .mp-lobby-btns { display: flex; gap: 12px; margin-bottom: 16px; }
+  .mp-btn {
+    padding: 10px 20px; font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink); transition: all 0.15s;
+  }
+  .mp-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+  .mp-btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--ink); }
+  .mp-btn-create { background: var(--ink); color: var(--cream); }
+  .mp-btn-join { background: var(--paper); }
+  .mp-btn-go { background: var(--sage); color: #fff; border-color: var(--ink); flex-shrink: 0; }
+  .mp-step-label { font-family: var(--mono); font-size: 0.75rem; color: var(--navy-light); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .mp-code-box { display: flex; gap: 8px; align-items: stretch; }
+  .mp-code {
+    flex: 1; height: 56px; padding: 8px; font-family: var(--mono); font-size: 0.72rem;
+    border: 1.5px solid rgba(15,23,42,0.2); background: var(--paper); color: var(--ink);
+    resize: none; outline: none; line-height: 1.3;
+  }
+  .mp-code:focus { border-color: var(--red); }
+  .mp-copy-btn {
+    padding: 0 14px; font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
+    background: var(--red); color: #fff; border: 2px solid var(--ink); cursor: pointer;
+    box-shadow: 2px 2px 0 var(--ink); transition: all 0.15s; white-space: nowrap;
+  }
+  .mp-copy-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--ink); }
+  .mp-status {
+    font-family: var(--mono); font-size: 0.78rem; padding: 6px 10px; margin-bottom: 10px;
+    min-height: 1.5em; color: var(--navy-light);
+  }
+  .mp-status.mp-connected { color: var(--sage); font-weight: 700; }
+  .mp-status.mp-error { color: var(--red); font-weight: 700; }
+  .mp-waiting { margin-top: 8px; color: var(--gold); animation: essay-pulse 2s ease-in-out infinite; }
+  .mp-scoreboard {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-bottom: 12px; padding: 12px; border: 1.5px solid rgba(15,23,42,0.12); background: var(--paper);
+  }
+  .mp-player { display: flex; flex-direction: column; align-items: center; min-width: 80px; }
+  .mp-player-label { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy-light); }
+  .mp-player-score { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; }
+  .mp-you .mp-player-score { color: var(--red); }
+  .mp-them .mp-player-score { color: var(--sage); }
+  .mp-vs { font-family: var(--mono); font-size: 0.85rem; font-weight: 700; color: var(--navy-light); }
+  .mp-timer-bar { height: 4px; background: rgba(15,23,42,0.08); margin-bottom: 10px; overflow: hidden; }
+  .mp-timer-fill { height: 100%; background: var(--red); transition: width 0.3s linear; width: 100%; }
+  .mp-round-info { font-family: var(--mono); font-size: 0.75rem; color: var(--navy-light); margin-bottom: 10px; }
+  .mp-question { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 14px; line-height: 1.4; min-height: 2.5em; }
+  .mp-options { display: flex; flex-direction: column; gap: 8px; }
+  .mp-opt {
+    padding: 10px 14px; background: var(--paper); border: 1.5px solid rgba(15,23,42,0.12);
+    color: var(--ink); font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+    text-align: left; font-family: var(--sans); line-height: 1.3;
+  }
+  .mp-opt:hover { background: var(--red-light); border-color: var(--red); }
+  .mp-opt.mp-selected { background: rgba(230,57,70,0.12); border-color: var(--red); font-weight: 600; pointer-events: none; }
+  .mp-opt.mp-correct { background: rgba(88,129,87,0.15); border-color: var(--sage); color: var(--sage); }
+  .mp-opt.mp-wrong { background: rgba(230,57,70,0.1); border-color: var(--red); color: var(--red); }
+  .mp-opt.mp-dim { opacity: 0.35; pointer-events: none; }
+  .mp-opt.mp-locked { pointer-events: none; }
+  .mp-reveal { text-align: center; padding: 8px; font-family: var(--mono); font-size: 0.82rem; margin-top: 8px; color: var(--navy-light); }
+  .mp-final-result { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 8px; }
+  .mp-final-scores { font-family: var(--serif); font-size: 1rem; text-align: center; color: var(--navy-light); margin-bottom: 20px; font-style: italic; }
 </style>
 </head>
 <body>
@@ -846,7 +912,7 @@
   <div class="hero-decoration">
     <div class="file-display">
       index.html<br>
-      <span>28 KB &bull; EVERYTHING</span>
+      <span>80 KB &bull; EVERYTHING</span>
     </div>
   </div>
   <div class="scroll-hint">&#8595; Scroll to explore</div>
@@ -1026,7 +1092,69 @@ All in one HTML file.</textarea>
         <div class="md-preview" id="md-output"></div>
       </div>
     </div>
-  </div>
+
+    <div class="demo-card reveal" style="grid-column: 1 / -1;">
+      <h3>A Multiplayer Trivia Game</h3>
+      <div class="line-count">308 lines of JavaScript</div>
+      <p style="font-size: 0.9rem; margin-bottom: 12px; color: var(--navy-light);">Real peer-to-peer WebRTC. No server. Share a code to connect.</p>
+      <div class="mp-game" id="mpGame">
+        <div class="mp-status" id="mpStatus"></div>
+        <div id="mpLobby">
+          <div class="mp-lobby-btns">
+            <button class="mp-btn mp-btn-create" id="mpCreate">Create Game</button>
+            <button class="mp-btn mp-btn-join" id="mpJoin">Join Game</button>
+          </div>
+          <div id="mpHostFlow" style="display:none">
+            <div class="mp-step-label">Step 1: Send this code to your opponent</div>
+            <div class="mp-code-box">
+              <textarea class="mp-code" id="mpOfferOut" readonly></textarea>
+              <button class="mp-copy-btn" id="mpCopyOffer">Copy</button>
+            </div>
+            <div class="mp-step-label" style="margin-top:12px">Step 2: Paste their response code</div>
+            <div class="mp-code-box">
+              <textarea class="mp-code" id="mpAnswerIn" placeholder="Paste answer code here..."></textarea>
+              <button class="mp-btn mp-btn-go" id="mpConnectAnswer">Connect</button>
+            </div>
+          </div>
+          <div id="mpGuestFlow" style="display:none">
+            <div class="mp-step-label">Step 1: Paste the host's game code</div>
+            <div class="mp-code-box">
+              <textarea class="mp-code" id="mpOfferIn" placeholder="Paste offer code here..."></textarea>
+              <button class="mp-btn mp-btn-go" id="mpProcessOffer">Next</button>
+            </div>
+            <div id="mpGuestStep2" style="display:none">
+              <div class="mp-step-label" style="margin-top:12px">Step 2: Send this code back to the host</div>
+              <div class="mp-code-box">
+                <textarea class="mp-code" id="mpAnswerOut" readonly></textarea>
+                <button class="mp-copy-btn" id="mpCopyAnswer">Copy</button>
+              </div>
+              <div class="mp-step-label mp-waiting">Waiting for connection...</div>
+            </div>
+          </div>
+        </div>
+        <div id="mpPlay" style="display:none">
+          <div class="mp-scoreboard">
+            <div class="mp-player mp-you"><span class="mp-player-label">You</span><span class="mp-player-score" id="mpYourScore">0</span></div>
+            <div class="mp-vs">VS</div>
+            <div class="mp-player mp-them"><span class="mp-player-label">Opponent</span><span class="mp-player-score" id="mpTheirScore">0</span></div>
+          </div>
+          <div class="mp-timer-bar"><div class="mp-timer-fill" id="mpTimerFill"></div></div>
+          <div class="mp-round-info"><span id="mpRound">1 / 5</span></div>
+          <div class="mp-question" id="mpQuestion"></div>
+          <div class="mp-options" id="mpOptions"></div>
+          <div class="mp-reveal" id="mpReveal" style="display:none">
+            <div id="mpRevealText"></div>
+          </div>
+        </div>
+        <div id="mpFinal" style="display:none">
+          <div class="mp-final-result" id="mpFinalResult"></div>
+          <div class="mp-final-scores" id="mpFinalScores"></div>
+          <button class="mp-btn mp-btn-create" id="mpPlayAgain">Play Again</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
 </section>
 
 <!-- ═══════ CASE STUDY ═══════ -->
@@ -1560,6 +1688,315 @@ function renderMarkdown(text) {
 function updatePreview() { mdOutput.innerHTML = renderMarkdown(mdInput.value); }
 mdInput.addEventListener('input', updatePreview);
 updatePreview();
+
+// ── Multiplayer Trivia (WebRTC) ──
+(function() {
+  const STUN = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+  const QUESTIONS = [
+    { q: "Which planet rains diamonds?", o: ["Jupiter", "Neptune", "Mars", "Venus"], a: 1 },
+    { q: "How many times does the human heart beat per day?", o: ["~50,000", "~100,000", "~150,000", "~200,000"], a: 1 },
+    { q: "What is the only letter that doesn't appear in any US state name?", o: ["Q", "X", "Z", "B"], a: 0 },
+    { q: "A group of flamingos is called a:", o: ["Flock", "Flamboyance", "Flutter", "Blush"], a: 1 },
+    { q: "How long is one day on Venus (in Earth days)?", o: ["36 days", "116 days", "243 days", "687 days"], a: 2 }
+  ];
+  const TIMEOUT = 10000;
+  const $ = id => document.getElementById(id);
+  let pc, dc, isHost = false, myScore = 0, theirScore = 0, curQ = 0;
+  let myAnswer = -1, theirAnswer = -1, timerInterval, timerStart;
+  let connected = false, gameStarted = false;
+
+  function setStatus(msg, cls) {
+    const el = $('mpStatus');
+    el.textContent = msg;
+    el.className = 'mp-status' + (cls ? ' mp-' + cls : '');
+  }
+
+  function compress(sdp) {
+    // Strip unnecessary SDP lines to shorten the code
+    const dominated = ['a=extmap', 'a=rtcp-rsize', 'a=msid', 'a=ssrc', 'a=mid', 'a=rtpmap',
+      'a=fmtp', 'a=rtcp-fb', 'a=rtcp:', 'a=sctpmap', 'a=group', 'a=ice-options'];
+    const lines = sdp.split('\r\n').filter(l => {
+      for (const d of dominated) if (l.startsWith(d)) return false;
+      return true;
+    });
+    return btoa(lines.join('\n'));
+  }
+
+  function decompress(code) {
+    const lines = atob(code).split('\n');
+    return lines.join('\r\n');
+  }
+
+  function createPC() {
+    pc = new RTCPeerConnection(STUN);
+    pc.oniceconnectionstatechange = () => {
+      if (pc.iceConnectionState === 'disconnected' || pc.iceConnectionState === 'failed') {
+        setStatus('Opponent disconnected', 'error');
+      }
+    };
+  }
+
+  function onChannelOpen() {
+    connected = true;
+    setStatus('Connected!', 'connected');
+    $('mpLobby').style.display = 'none';
+    $('mpPlay').style.display = 'block';
+    if (isHost) {
+      // Host sends the start signal with question order
+      setTimeout(() => {
+        send({ type: 'start' });
+        startGame();
+      }, 500);
+    }
+  }
+
+  function onChannelMessage(evt) {
+    const msg = JSON.parse(evt.data);
+    if (msg.type === 'start') {
+      startGame();
+    } else if (msg.type === 'answer') {
+      theirAnswer = msg.idx;
+      checkRoundEnd();
+    } else if (msg.type === 'again') {
+      resetGame();
+    }
+  }
+
+  function setupChannel(ch) {
+    dc = ch;
+    dc.onopen = onChannelOpen;
+    dc.onmessage = onChannelMessage;
+    dc.onclose = () => setStatus('Opponent disconnected', 'error');
+  }
+
+  function send(obj) {
+    if (dc && dc.readyState === 'open') dc.send(JSON.stringify(obj));
+  }
+
+  // Host flow
+  $('mpCreate').onclick = async () => {
+    isHost = true;
+    createPC();
+    const ch = pc.createDataChannel('trivia');
+    setupChannel(ch);
+    setStatus('Generating game code...');
+    $('mpHostFlow').style.display = 'block';
+    $('mpGuestFlow').style.display = 'none';
+    $('mpCreate').style.display = 'none';
+    $('mpJoin').style.display = 'none';
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    // Wait for ICE gathering to complete
+    await new Promise(resolve => {
+      if (pc.iceGatheringState === 'complete') return resolve();
+      pc.onicegatheringstatechange = () => {
+        if (pc.iceGatheringState === 'complete') resolve();
+      };
+      // Fallback timeout
+      setTimeout(resolve, 5000);
+    });
+
+    const code = compress(pc.localDescription.sdp);
+    $('mpOfferOut').value = code;
+    setStatus('Code ready. Share it with your opponent.');
+  };
+
+  $('mpCopyOffer').onclick = () => {
+    navigator.clipboard.writeText($('mpOfferOut').value);
+    $('mpCopyOffer').textContent = 'Copied!';
+    setTimeout(() => $('mpCopyOffer').textContent = 'Copy', 1500);
+  };
+
+  $('mpConnectAnswer').onclick = async () => {
+    const code = $('mpAnswerIn').value.trim();
+    if (!code) return;
+    try {
+      setStatus('Connecting...');
+      const sdp = decompress(code);
+      await pc.setRemoteDescription({ type: 'answer', sdp });
+    } catch (e) {
+      setStatus('Invalid answer code. Try again.', 'error');
+    }
+  };
+
+  // Guest flow
+  $('mpJoin').onclick = () => {
+    isHost = false;
+    $('mpGuestFlow').style.display = 'block';
+    $('mpHostFlow').style.display = 'none';
+    $('mpCreate').style.display = 'none';
+    $('mpJoin').style.display = 'none';
+    setStatus('Paste the host\'s game code below.');
+  };
+
+  $('mpProcessOffer').onclick = async () => {
+    const code = $('mpOfferIn').value.trim();
+    if (!code) return;
+    try {
+      setStatus('Processing...');
+      createPC();
+      pc.ondatachannel = (evt) => setupChannel(evt.channel);
+
+      const sdp = decompress(code);
+      await pc.setRemoteDescription({ type: 'offer', sdp });
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
+      await new Promise(resolve => {
+        if (pc.iceGatheringState === 'complete') return resolve();
+        pc.onicegatheringstatechange = () => {
+          if (pc.iceGatheringState === 'complete') resolve();
+        };
+        setTimeout(resolve, 5000);
+      });
+
+      const answerCode = compress(pc.localDescription.sdp);
+      $('mpAnswerOut').value = answerCode;
+      $('mpGuestStep2').style.display = 'block';
+      setStatus('Answer code ready. Send it to the host.');
+    } catch (e) {
+      setStatus('Invalid game code. Check and try again.', 'error');
+    }
+  };
+
+  $('mpCopyAnswer').onclick = () => {
+    navigator.clipboard.writeText($('mpAnswerOut').value);
+    $('mpCopyAnswer').textContent = 'Copied!';
+    setTimeout(() => $('mpCopyAnswer').textContent = 'Copy', 1500);
+  };
+
+  // Game logic
+  function startGame() {
+    gameStarted = true;
+    myScore = 0; theirScore = 0; curQ = 0;
+    showQuestion();
+  }
+
+  function showQuestion() {
+    if (curQ >= QUESTIONS.length) { endGame(); return; }
+    myAnswer = -1; theirAnswer = -1;
+    const q = QUESTIONS[curQ];
+    $('mpRound').textContent = (curQ + 1) + ' / ' + QUESTIONS.length;
+    $('mpQuestion').textContent = q.q;
+    $('mpReveal').style.display = 'none';
+    $('mpYourScore').textContent = myScore;
+    $('mpTheirScore').textContent = theirScore;
+
+    const optsEl = $('mpOptions');
+    optsEl.innerHTML = '';
+    q.o.forEach((text, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'mp-opt';
+      btn.textContent = text;
+      btn.onclick = () => pickAnswer(i);
+      optsEl.appendChild(btn);
+    });
+
+    // Start timer
+    timerStart = Date.now();
+    $('mpTimerFill').style.width = '100%';
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      const elapsed = Date.now() - timerStart;
+      const pct = Math.max(0, 1 - elapsed / TIMEOUT) * 100;
+      $('mpTimerFill').style.width = pct + '%';
+      if (elapsed >= TIMEOUT) {
+        clearInterval(timerInterval);
+        if (myAnswer === -1) {
+          myAnswer = -2; // timed out
+          send({ type: 'answer', idx: -2 });
+          lockOptions();
+          checkRoundEnd();
+        }
+      }
+    }, 100);
+  }
+
+  function pickAnswer(idx) {
+    if (myAnswer !== -1) return;
+    myAnswer = idx;
+    send({ type: 'answer', idx });
+    // Highlight selection
+    const btns = $('mpOptions').children;
+    for (let i = 0; i < btns.length; i++) {
+      if (i === idx) btns[i].classList.add('mp-selected');
+      btns[i].classList.add('mp-locked');
+    }
+    checkRoundEnd();
+  }
+
+  function lockOptions() {
+    const btns = $('mpOptions').children;
+    for (let i = 0; i < btns.length; i++) btns[i].classList.add('mp-locked');
+  }
+
+  function checkRoundEnd() {
+    if (myAnswer === -1 || theirAnswer === -1) return; // still waiting
+    clearInterval(timerInterval);
+
+    const q = QUESTIONS[curQ];
+    const btns = $('mpOptions').children;
+
+    // Score
+    if (myAnswer === q.a) myScore++;
+    if (theirAnswer === q.a) theirScore++;
+    $('mpYourScore').textContent = myScore;
+    $('mpTheirScore').textContent = theirScore;
+
+    // Reveal correct/wrong
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].classList.remove('mp-selected', 'mp-locked');
+      if (i === q.a) {
+        btns[i].classList.add('mp-correct');
+      } else if (i === myAnswer || i === theirAnswer) {
+        btns[i].classList.add('mp-wrong');
+      } else {
+        btns[i].classList.add('mp-dim');
+      }
+      btns[i].classList.add('mp-locked');
+    }
+
+    // Show reveal text
+    const revealEl = $('mpReveal');
+    revealEl.style.display = 'block';
+    let youText = myAnswer === q.a ? 'You: Correct!' : (myAnswer === -2 ? 'You: Timed out' : 'You: Wrong');
+    let themText = theirAnswer === q.a ? 'Opponent: Correct!' : (theirAnswer === -2 ? 'Opponent: Timed out' : 'Opponent: Wrong');
+    $('mpRevealText').textContent = youText + '  |  ' + themText;
+
+    // Next question after delay
+    curQ++;
+    setTimeout(() => showQuestion(), 2000);
+  }
+
+  function endGame() {
+    clearInterval(timerInterval);
+    $('mpPlay').style.display = 'none';
+    $('mpFinal').style.display = 'block';
+
+    let resultText, resultColor;
+    if (myScore > theirScore) { resultText = 'You Win!'; resultColor = 'var(--sage)'; }
+    else if (myScore < theirScore) { resultText = 'You Lose'; resultColor = 'var(--red)'; }
+    else { resultText = "It's a Tie"; resultColor = 'var(--gold)'; }
+
+    $('mpFinalResult').textContent = resultText;
+    $('mpFinalResult').style.color = resultColor;
+    $('mpFinalScores').textContent = 'You: ' + myScore + ' / ' + QUESTIONS.length + '  —  Opponent: ' + theirScore + ' / ' + QUESTIONS.length;
+  }
+
+  function resetGame() {
+    myScore = 0; theirScore = 0; curQ = 0;
+    $('mpFinal').style.display = 'none';
+    $('mpPlay').style.display = 'block';
+    showQuestion();
+  }
+
+  $('mpPlayAgain').onclick = () => {
+    send({ type: 'again' });
+    resetGame();
+  };
+})();
 </script>
 </body>
 </html>
